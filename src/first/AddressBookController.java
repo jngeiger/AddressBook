@@ -32,18 +32,18 @@ public class AddressBookController implements Initializable {
         list = tv.getItems();
         list.add(new Person("Max","Mustermann","mm@mm.de"));
         selectedPerson = new Person("","","");
-        tf_email.textProperty().bindBidirectional(selectedPerson.emailProperty());
-        tf_firstName.textProperty().bind(selectedPerson.emailProperty());
-        tf_lastName.textProperty().bind(selectedPerson.nachnameProperty());
+        selectedPerson.emailProperty().bind(tf_email.textProperty());
+        selectedPerson.nameProperty().bind(tf_firstName.textProperty());
+        selectedPerson.nachnameProperty().bind(tf_lastName.textProperty());
 
         tv.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Person>() {
             public void changed(ObservableValue<? extends Person> p, Person oldVal, Person newVal)
             {
                 if (newVal != null)
                 {
-                    selectedPerson.setEmail(newVal.getEmail());
-                    selectedPerson.setNachname(newVal.getNachname());
-                    selectedPerson.setName(newVal.getName());
+                    tf_firstName.setText(newVal.getName());
+                    tf_lastName.setText(newVal.getNachname());
+                    tf_email.setText(newVal.getEmail());
                 }
             }
         });
