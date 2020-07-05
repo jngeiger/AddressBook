@@ -43,6 +43,7 @@
         </columns>
     </TableView>
     <HBox GridPane.rowIndex="51" GridPane.columnIndex="0" spacing="10">
+        <Label fx:id="lb_mode"></Label>
         <TextField fx:id="tf_firstName" promptText="Vorname"></TextField>
         <TextField fx:id="tf_lastName" promptText="Nachname"></TextField>
         <TextField fx:id="tf_email" promptText="E-Mail"></TextField>
