@@ -25,12 +25,13 @@ public class AddressBookController implements Initializable {
     @FXML TextField tf_firstName;
     @FXML TextField tf_lastName;
     @FXML TextField tf_email;
+    Person selectedPerson;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         list = tv.getItems();
         list.add(new Person("Max","Mustermann","mm@mm.de"));
-        Person selectedPerson = new Person("","","");
+        selectedPerson = new Person("","","");
         tf_email.textProperty().bindBidirectional(selectedPerson.emailProperty());
         tf_firstName.textProperty().bind(selectedPerson.emailProperty());
         tf_lastName.textProperty().bind(selectedPerson.nachnameProperty());
@@ -65,7 +66,7 @@ public class AddressBookController implements Initializable {
     @FXML
     public void save(ActionEvent e)
     {
-
+        list.add(new Person(selectedPerson.getName(),selectedPerson.getNachname(),selectedPerson.getEmail()));
     }
 
 }
